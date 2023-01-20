@@ -1,0 +1,109 @@
+--SELECT 
+--	COUNT(DISTINCT o.order_id) 
+--FROM orders o 
+
+--SELECT 
+--	COUNT(DISTINCT oi.order_id) 
+--FROM order_items oi 
+--
+--
+--SELECT 
+--	COUNT(DISTINCT o.order_id) 
+--FROM orders o INNER JOIN order_items oi on (oi.order_id = o.order_id)
+
+
+-- --question 01
+--SELECT 
+--	oi.order_id,
+--	o.customer_id,
+--	o.order_status,
+--	oi.product_id,
+--	oi.price 
+--FROM order_items oi INNER JOIN orders o ON (oi.order_id = o.order_id)
+--LIMIT 10
+
+-- --question 02
+--SELECT
+--	o.order_id,
+--	c.customer_state,
+--	c.customer_city,
+--	o.order_status,
+--	oi.product_id,
+--	oi.price 
+--FROM orders o  INNER JOIN customer c  ON(c.customer_id = o.customer_id)
+--			   INNER JOIN order_items oi ON (o.order_id = o.order_id)
+--WHERE c.customer_state = 'SP'
+--LIMIT 20
+
+-- --question 03
+--SELECT 
+--	oi.order_id,
+--	c.customer_state,
+--	c.customer_city,
+--	o.order_status,
+--	p.product_category_name,
+--	oi.price 
+--FROM orders o INNER JOIN order_items oi ON (o.order_id = oi.order_id)
+--			  INNER JOIN customer c ON (c.customer_id = o.customer_id)	
+--			  INNER JOIN products p ON (oi.product_id = p.product_id)
+--WHERE o.order_status = 'canceled'
+--LIMIT 50
+----
+-- --question 04
+--SELECT 
+--	oi.order_id,
+--	c.customer_state,
+--	c.customer_city,
+--	o.order_status,
+--	p.product_category_name,
+--	oi.price,
+--	s.seller_state,
+--	s.seller_city,
+--	o.order_approved_at 
+--FROM orders o INNER JOIN order_items oi ON (o.order_id = oi.order_id)
+--			  INNER JOIN customer c ON (c.customer_id = o.customer_id)	
+--			  INNER JOIN products p ON (oi.product_id = p.product_id)
+--			  INNER JOIN sellers s ON (oi.seller_id = s.seller_id)
+--WHERE o.order_approved_at > DATE('2016-09-16')
+--LIMIT 50
+--
+-- --question 05
+--SELECT 
+--	oi.order_id,
+--	c.customer_state,
+--	c.customer_city,
+--	o.order_status,
+--	p.product_category_name,
+--	oi.price,
+--	s.seller_state,
+--	s.seller_city,
+--	o.order_approved_at ,
+--	op.payment_type 
+--FROM orders o INNER JOIN order_items oi ON (o.order_id = oi.order_id)
+--			  INNER JOIN customer c ON (c.customer_id = o.customer_id)	
+--			  INNER JOIN products p ON (oi.product_id = p.product_id)
+--			  INNER JOIN sellers s ON (oi.seller_id = s.seller_id)
+--			  INNER JOIN order_payments op ON(o.order_id = op.order_id)
+--WHERE op.payment_type  = 'boleto'
+--LIMIT 10
+--
+--SELECT 
+--	oi.order_id,
+--	c.customer_state,
+--	c.customer_city,
+--	o.order_status,
+--	p.product_category_name,
+--	oi.price,
+--	s.seller_state,
+--	s.seller_city,
+--	o.order_approved_at ,
+--	op.payment_type,
+--	or2.review_score
+--FROM orders o INNER JOIN order_items oi ON (o.order_id = oi.order_id)
+--			  INNER JOIN customer c ON (c.customer_id = o.customer_id)	
+--			  INNER JOIN products p ON (oi.product_id = p.product_id)
+--			  INNER JOIN sellers s ON (oi.seller_id = s.seller_id)
+--			  INNER JOIN order_payments op ON(o.order_id = op.order_id)
+--			  INNER JOIN order_reviews or2 ON(o.order_id = or2.order_id)
+--WHERE or2.review_score  = 1
+--LIMIT 10

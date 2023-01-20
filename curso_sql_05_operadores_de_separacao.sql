@@ -1,0 +1,55 @@
+-- utilizado nas clausulas SELECT  e WHERE
+-- igualdade (=)
+-- desigualdade (<>)
+-- Maior (>) ou Menor(<) 
+-- Maior igual (>=) ou Menorigual(<=) 
+
+--question 01
+--SELECT
+--	COUNT(DISTINCT c.customer_unique_id) 
+--FROM customer c 
+--WHERE c.customer_state = 'SP'
+--
+--question 02
+--SELECT 
+--	COUNT(DISTINCT o.order_id) 
+--FROM orders o
+--WHERE o.order_approved_at = '2016-10-08'
+
+--question 03
+--SELECT 
+--	COUNT(DISTINCT o.order_id) 
+--FROM orders o
+--WHERE o.order_approved_at > '2016-10-08'
+
+--question 04
+--SELECT 
+--	COUNT(DISTINCT o.order_id) 
+--FROM orders o
+--WHERE o.order_approved_at >= '2016-10-08'
+
+--question 05
+--SELECT
+--	oi.seller_id,
+--	COUNT(DISTINCT oi.order_id),
+--	MIN(DATE(oi.shipping_limit_date)),
+--	MAX(DATE(oi.shipping_limit_date)),
+--	MAX(oi.freight_value),
+--	MIN(oi.freight_value),
+--	AVG(oi.freight_value)
+--FROM order_items oi
+--WHERE oi.price < 1100
+--GROUP BY oi.seller_id 
+
+--question 06
+--SELECT
+--	oi.seller_id,
+--	COUNT(DISTINCT oi.order_id),
+--	MIN(DATE(oi.shipping_limit_date)),
+--	MAX(DATE(oi.shipping_limit_date)),
+--	MAX(oi.freight_value),
+--	MIN(oi.freight_value),
+--	AVG(oi.freight_value)
+--FROM order_items oi
+--WHERE oi.price <= 1100
+--GROUP BY oi.seller_id 
