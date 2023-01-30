@@ -1,0 +1,68 @@
+----question 01
+--SELECT
+--	o.order_id,
+--	o.order_status,
+--	oi.product_id,
+--	p.product_category_name,
+--	or2.review_score,
+--	op.payment_value,
+--	op.payment_type,
+--	s.seller_city,
+--	g.geolocation_lat,
+--	g.geolocation_lng 
+--FROM orders o LEFT JOIN order_items oi ON(o.order_id = oi.order_id)
+--			  LEFT JOIN products p on(p.product_id = oi.product_id)	
+--			  LEFT JOIN order_reviews or2 ON (or2.order_id = o.order_id)
+--			  LEFT JOIN order_payments op ON (op.payment_type = o.order_id)
+--			  LEFT JOIN sellers s ON (s.seller_id = oi.seller_id)
+--			  LEFT JOIN geolocation g ON (g.geolocation_zip_code_prefix = s.seller_zip_code_prefix)
+--LIMIT 20		
+
+----question 02
+--SELECT 
+--	o.order_id,
+--	COUNT(DISTINCT op.payment_type) 
+--FROM orders o LEFT JOIN order_payments op  ON (op.order_id = o.order_id)
+--WHERE o.order_id = 'e481f51cbdc54678b7cc49136f2d6af7'
+
+----question 03
+--SELECT
+--	o.order_id, 
+--	COUNT(DISTINCT oi.product_id) 
+--FROM orders o LEFT JOIN order_items oi  ON(o.order_id = oi.order_id)
+--GROUP BY o.order_id
+--HAVING  COUNT(DISTINCT oi.product_id) > 5
+
+---question 04
+--SELECT 
+--	o.order_id,
+--	COUNT(or2.review_id) 
+--FROM orders o LEFT JOIN order_reviews or2 ON (o.order_id = or2.order_id)
+--GROUP BY o.order_id
+--HAVING 	COUNT(Or2.review_id) >2
+
+----question 05
+--SELECT 
+--	o.order_id,
+--	or2.review_id
+--FROM orders o LEFT JOIN order_reviews or2 ON (o.order_id = or2.order_id)
+--WHERE or2.order_id IS NULL
+---- sem orders sem review
+
+----question 06
+--SELECT 
+--	s.seller_id,
+--	COUNT(DISTINCT c.customer_id) 
+--FROM orders o LEFT JOIN order_items oi ON(o.order_id = oi.order_id)
+--			  LEFT JOIN customer c ON (c.customer_id = o.customer_id)
+--			  LEFT JOIN sellers s ON (oi.seller_id = s.seller_id)
+--GROUP BY s.seller_id
+--ORDER BY COUNT(DISTINCT c.customer_id) DESC
+--LIMIT 10
+
+----question 07
+--SELECT 
+--	COUNT(o.order_id)
+--FROM orders o LEFT JOIN order_items oi ON (o.order_id = oi.order_id) 
+--			  LEFT JOIN products p  ON (oi.product_id  = p.product_id)
+--WHERE p.product_id  IS NULL
